@@ -9,9 +9,38 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             background-color: #f4f4f4;
-            color: #333;
         }
+
+        .card {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #555;
+        }
+
 
         header {
             background-color: #333;
@@ -53,12 +82,20 @@
     </header>
 
     <nav>
-        <a href="astorey5.github.io/education.html">Education</a>
+        <a href="#">Education</a>
         <a href="#">Experience</a>
         <a href="#">Extra Curricular</a>
         <a href="#">Interests</a>
         <a href="#">Contact</a>
     </nav>
+
+    <div class="card">
+        <img src="your-image-url.jpg" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">Card Title</h2>
+            <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2023. All rights reserved.</p>
