@@ -53,12 +53,22 @@
     </header>
 
     <nav>
-        <a href="/education">Education</a>
+        <a href="#">Education</a>
         <a href="#">Experience</a>
         <a href="#">Extra Curricular</a>
         <a href="#">Interests</a>
         <a href="#">Contact</a>
     </nav>
+
+    <section>
+        <h2>Swansea University</h2>
+        <p>First Class Honours...</p>
+    </section>
+
+    <section>
+        <h2>UEA</h2>
+        <p>BLah BLah Blah.</p>
+    </section>
 
     <footer>
         <p>&copy; 2023. All rights reserved.</p>
