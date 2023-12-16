@@ -10,8 +10,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f4f4;
+            background: linear-gradient(to bottom, #2B4560, #E1E7E0, #6AA4B0, #2F6D80);
         }
+
 
         .card {
             width: 80%;
@@ -25,7 +26,7 @@
 
         .card img {
             width: 100%;
-            height: 200px; /* Fixed height for the image */
+            height: 400px; /* Fixed height for the image */
             object-fit: cover;
             border-bottom: 1px solid #e1e1e1;
         }
@@ -50,7 +51,7 @@
 
 
         header {
-            background-image: repeating-radial-gradient(  #0c0a0a 80%,#2f312f 90%,#3f4549 90%);
+            background-image: repeating-radial-gradient(  #2B4560 80%,#6AA4B0 90%,#2F6D80 90%);
             background-size: 65px 65px;
             color: #fff;
             padding: 1em;
@@ -58,14 +59,16 @@
         }
 
         nav {
-            background-color: #444;
+            background-color: #E1E7E0;
             padding: 0.5em;
             text-align: center;
+            color: #2F6D80;
         }
 
         nav a {
-            color: #fff;
+            color: #2F6D80;
             text-decoration: none;
+            font-weight: bold;
             padding: 1em;
             margin: 0 1em;
         }
@@ -86,7 +89,6 @@
 
     <header>
         <h1>Andrew Storey</h1>
-        <p>Welcome to my CV!</p>
     </header>
 
     <nav>
@@ -98,11 +100,36 @@
     </nav>
 
     <div class="card">
-        <img src="your-image-url.jpg" alt="Card Image">
+        <img src="90b695b5-7f49-4578-b377-e810697ff702.JPG" alt="Graduation Photo">
         <div class="card-content">
-            <h2 class="card-title">Card Title</h2>
-            <h3 class="card-subtitle">Subtitle</h3>
-            <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h2 class="card-title">Swansea University</h2>
+            <h3 class="card-subtitle">BSc Computer Science - First Class Hons</h3>
+            <p class="card-content">I transfered to second year of studies at Swansea University in 2021 from the University of East Anglia. Graduated 2023
+                <br /><br />
+                <b>Dissertation:</b> Using AI to value second hand cars. This involved web scraping and then cleaning data to put into a random forests model. 
+                <br /><br />
+                <b>Third Year Modules:</b> Embedded System Design, Big data & Machine learning, Cryptography, Teaching 
+                Computing Via School Placement, Mobile Apps, Advanced Object Orientated Programming
+                <br /><br />
+                <b>Second Year Modules:</b> Software Engineering (Java), Declarative Programming (Haskell, Prolog), 
+                Database Systems, Algorithms, Formal Languages & Automata, Graphics, Human Computer 
+                Interaction, Concurrency.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="IMG_5431.JPG" alt="UEA Photo">
+        <div class="card-content">
+            <h2 class="card-title">University Of East Anglia (UEA)</h2>
+            <h3 class="card-subtitle">BSc Computer Science </h3>
+            <p class="card-content">2019 - 2021. Transferred to Swansea to continue Studies.
+                <br /><br />
+                <b>First year grade:</b> First Class. First year modules: Databases, Programming (Java), Mathematics, Web 
+                based programming, Systems development, and Computing principles. 
+                <br /><br />
+                <b>Second year modules:</b> Analogue & Digital Electronics, Architecture and Operating Systems, 
+                Programming (C, C++, Java), Software Engineering, Data Structures & Algorithms, Embedded 
+                Systems.
         </div>
     </div>
 
