@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Modern Card</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .card {
+      position: relative;
+      width: 300px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card.expanded {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.5);
+      z-index: 2;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border: 5px solid #e8491d; /* Retro border color */
+    }
+
+    .card .content {
+      padding: 15px;
+    }
+
+    .card .title {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #1e272e; /* Retro text color */
+    }
+
+    .card .header {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #e8491d; /* Retro header color */
+      margin-top: 10px;
+    }
+
+    .card .description {
+      margin-top: 15px;
+      color: #576574; /* Retro description color */
+      display: none;
+    }
+
+    .cross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
+  display: none;
+}
+
+.cross::before {
+  content: '✖';
+  font-size: 1.5em;
+  line-height: 20px;
+  text-align: center;
+}
+
+.card.expanded .cross {
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  right: 10px;
+  bottom: 10px; /* Adjust this value to control the vertical position */
+  cursor: pointer;
+  z-index: 1;
+}
+
+.arrow::before {
+  content: '\2192'; /* Unicode arrow right character */
+  font-size: 1.5em;
+  color: #fff;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.arrow::before,
+.card.expanded .arrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #e8491d;
+  border-radius: 50%;
+}
+
+.card.expanded .arrow::before {
+  display: none;
+}
+
+.card .description {
+  margin-top: 15px;
+  color: #576574;
+  display: none;
+}
+
+.card.expanded .description {
+  display: block;
+}
+
+
+  </style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="card" onclick="toggleCard()">
+    <img src="your_image_url.jpg" alt="Card Image">
+    <div class="content">
+      <div class="title">one</div>
+      <div class="header">Header 1</div>
+      <div class="header">Header 2</div>
+      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida hendrerit augue, ac aliquam risus dapibus sit amet.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="cross"></div>
+  </div>
+</div>
+
+<div class="card-container">
+    <div class="card" onclick="toggleCard()">
+      <img src="your_image_url.jpg" alt="Card Image">
+      <div class="content">
+        <div class="title">two</div>
+        <div class="header">Header 1</div>
+        <div class="header">Header 2</div>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida hendrerit augue, ac aliquam risus dapibus sit amet.</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="cross"></div>
+    </div>
+  </div>
+
+
+  <div class="card-container">
+    <div class="card" onclick="toggleCard()">
+      <img src="your_image_url.jpg" alt="Card Image">
+      <div class="content">
+        <div class="title">three</div>
+        <div class="header">Header 1</div>
+        <div class="header">Header 2</div>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam gravida hendrerit augue, ac aliquam risus dapibus sit amet.</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="cross"></div>
+    </div>
+  </div>
+
+<script>
+    function toggleCard() {
+      const card = document.querySelector('.card');
+      const arrow = document.querySelector('.arrow');
+      const cross = document.querySelector('.cross');
+  
+      card.classList.toggle('expanded');
+      cross.classList.toggle('visible');
+      arrow.classList.toggle('hidden');
+    }
+  </script>
+  
+  
+
+</body>
+</html>

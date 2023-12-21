@@ -10,23 +10,41 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: linear-gradient(to bottom, #2B4560, #E1E7E0, #6AA4B0, #2F6D80);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: linear-gradient(45deg, #2B4560, #E1E7E0, #6AA4B0, #2F6D80);
+            background-size: 400% 400%;
         }
 
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
 
         .card {
-            width: 80%;
-            max-width: 400px;
-            margin: 20px auto;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             overflow: hidden;
+            transition: height 0.3s ease;
+            height: 300px; /* Initial height of the card */
+        }
+
+        .card.expanded {
+            height: auto; /* Auto height when expanded */
         }
 
         .card img {
             width: 100%;
-            height: 400px; /* Fixed height for the image */
+            height: 200px;
             object-fit: cover;
             border-bottom: 1px solid #e1e1e1;
         }
@@ -47,6 +65,21 @@
 
         .card-description {
             color: #555;
+        }
+
+        .expand-button {
+            cursor: pointer;
+            text-align: center;
+            color: #3498db;
+            padding: 10px;
+            background: #ecf0f1;
+            border-top: 1px solid #bdc3c7;
+            border-radius: 0 0 8px 8px;
+            transition: background 0.3s ease;
+        }
+
+        .expand-button:hover {
+            background: #bdc3c7;
         }
 
 
@@ -99,14 +132,51 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="card">
-        <img src="90b695b5-7f49-4578-b377-e810697ff702.JPG" alt="Graduation Photo">
-        <div class="card-content">
-            <h2 class="card-title">Windsurf Instructor</h2>
-            <h3 class="card-subtitle">Poole Windsurfing</h3>
-            <p class="card-content">I instructed windsurfing.</p>
+
+    <div class="card-container">
+
+        <div class="card">
+            <img src="P1000477.jpg" alt="Windsurf Photo">
+            <div class="card-content">
+                <h2 class="card-title">Windsurf Instructor</h2>
+                <h3 class="card-subtitle">Poole Windsurfing</h3>
+                <h3 class="card-subtitle">May 2023 - October 2023</h3>
+                <p class="card-content"><b>Description: </b>For the summer season of 2023 I worked as a windsurf instructor.
+                     Teaching all ages, litteraly from 6 years old to 76! This role gave me a wide range of responsiblities to manage from the safety of the customers to their enjoyment of the sessions.
+                      I really enjoyed this role as I was teaching my favourite sport and learning how best to adapt to each customer. 
+                    </br></br>
+                    <b>Skills Developed:</b> Risk Reduction, Communication and Team skills
+                    </p>
+            </div>
+            <div class="expand-button" onclick="toggleDescription(this)">Expand</div>
         </div>
+
+        <div class="card">
+            <img src="https://cdn.pooleyc.co.uk/media/bar/lounge.jpg" alt="Yacht club Photo">
+            <div class="card-content">
+                <h2 class="card-title">Bar Tender</h2>
+                <h3 class="card-subtitle">The Poole Yacht Club</h3>
+                <h3 class="card-subtitle">May 2023 - October 2023</h3>
+                <p class="card-content"><b>Description: </b>Here I was part of a small team, serving the members of the club at the bar but also helping the 
+                    kitchen with food service. I really enjoyed this work, being friendly and relaxed. 
+                    </br></br>
+                    <b>Skills Developed:</b> Communication and Juggling priorities. 
+                    </p>
+            </div>
+            <div class="expand-button" onclick="toggleDescription(this)">Expand</div>
+        </div>
+        
     </div>
+    
+    <script>
+        function toggleDescription(button) {
+            const card = button.parentElement;
+            card.classList.toggle('expanded');
+            button.textContent = card.classList.contains('expanded') ? 'Collapse' : 'Expand';
+        }
+    </script>
+    
+    
 
 
     <footer>

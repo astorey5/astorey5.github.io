@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Storey</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #282c34; /* Adjust the background color */
+            color: #fff; /* Adjust the text color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            cursor: pointer; /* Set the cursor style */
+        }
+
+        .intro-container {
+            text-align: center;
+            opacity: 0;
+        }
+
+        .intro-title {
+            font-size: 4em; /* Adjust the font size */
+            font-weight: bold;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff; /* Adjust the cursor color */
+            animation: 
+                typing 1s steps(20, end) forwards,
+                blinking .8s infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blinking {
+            from { border-color: transparent }
+            to { border-color: #fff; }
+        }
+
+        /* Add more styling as needed */
+
+    </style>
+</head>
+<body onclick="changeTitle()">
+
+    <div class="intro-container">
+        <h1 class="intro-title" id="typed-title">Click to Start</h1>
+        <!-- Add additional content or sections as needed -->
+    </div>
+
+    <script>
+        const titles = [
+            "Welcome "+getParameterByName("name"),
+            "You are now entering",
+            "The CV of...",
+            "Andrew Storey"
+        ];
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        let currentTitleIndex = 0;
+        let isAnimationInProgress = false;
+
+        function changeTitle() {
+    if (isAnimationInProgress) {
+        return;
+    }
+
+    isAnimationInProgress = true;
+
+    const title = document.getElementById('typed-title');
+    const currentTitle = titles[currentTitleIndex];
+    currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+
+    title.textContent = '';
+
+    function typeWriter(index) {
+        if (index < currentTitle.length) {
+            title.textContent += currentTitle.charAt(index);
+            const delay = 100;
+            setTimeout(function () {
+                typeWriter(index + 1);
+            }, delay);
+        } else {
+            if (currentTitleIndex === 0) {
+                setTimeout(growTitle, 500); // Trigger the grow animation after a delay for the last title
+            } else {
+                isAnimationInProgress = false; // Enable click after typing is complete for non-last titles
+            }
+        }
+    }
+
+    function growTitle() {
+        title.style.animation = 'none'; // Remove the typing animation
+        title.style.fontSize = '4em'; // Set the initial font size
+        title.style.width = '100%'; // Ensure the title covers the full width
+
+        // Increase font size until it covers the screen
+        function increaseFontSize() {
+            title.style.fontSize = `${parseFloat(title.style.fontSize) + 1}px`;
+
+            if (title.offsetWidth < window.innerWidth) {
+                requestAnimationFrame(increaseFontSize);
+            } else {
+                // Set the final font size and make the background color the same as the title
+                title.style.fontSize = '200vh';
+                document.body.style.backgroundColor = window.getComputedStyle(title).color;
+                isAnimationInProgress = false; // Enable click after the animation is complete
+            }
+        }
+
+        increaseFontSize();
+    }
+
+    typeWriter(0);
+}
+
+
+
+        // Trigger the reveal animation after the page is fully loaded
+        window.onload = function () {
+            document.querySelector('.intro-container').style.opacity = 1;
+        };
+    </script>
+
+</body>
+</html>
