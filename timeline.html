@@ -25,14 +25,14 @@
         }
 
         .intro-title {
-            font-size: 4em; /* Adjust the font size */
+            font-size: 4em; /* Adjust the initial font size */
             font-weight: bold;
             margin-bottom: 20px;
             white-space: nowrap;
             overflow: hidden;
             border-right: 2px solid #fff; /* Adjust the cursor color */
-            animation: 
-                typing 1s steps(20, end) forwards,
+            animation:
+                typing 2s steps(20, end) forwards,
                 blinking .8s infinite;
         }
 
@@ -50,6 +50,18 @@
             to { border-color: #fff; }
         }
 
+        @keyframes growAnimation {
+    from {
+        font-size: 4em;
+        width: 100%;
+    }
+    to {
+        font-size: 200vh;
+        width: 100%;
+    }
+}
+
+
         /* Add more styling as needed */
 
     </style>
@@ -63,7 +75,7 @@
 
     <script>
         const titles = [
-            "Welcome "+getParameterByName("name"),
+            "Welcome " + getParameterByName("name"),
             "You are now entering",
             "The CV of...",
             "Andrew Storey"
@@ -83,60 +95,53 @@
         let isAnimationInProgress = false;
 
         function changeTitle() {
-    if (isAnimationInProgress) {
-        return;
-    }
-
-    isAnimationInProgress = true;
-
-    const title = document.getElementById('typed-title');
-    const currentTitle = titles[currentTitleIndex];
-    currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-
-    title.textContent = '';
-
-    function typeWriter(index) {
-        if (index < currentTitle.length) {
-            title.textContent += currentTitle.charAt(index);
-            const delay = 100;
-            setTimeout(function () {
-                typeWriter(index + 1);
-            }, delay);
-        } else {
-            if (currentTitleIndex === 0) {
-                setTimeout(growTitle, 500); // Trigger the grow animation after a delay for the last title
-            } else {
-                isAnimationInProgress = false; // Enable click after typing is complete for non-last titles
+            if (isAnimationInProgress) {
+                return;
             }
-        }
-    }
 
-    function growTitle() {
-        title.style.animation = 'none'; // Remove the typing animation
-        title.style.fontSize = '4em'; // Set the initial font size
-        title.style.width = '100%'; // Ensure the title covers the full width
+            isAnimationInProgress = true;
 
-        // Increase font size until it covers the screen
-        function increaseFontSize() {
-            title.style.fontSize = `${parseFloat(title.style.fontSize) + 1}px`;
+            const title = document.getElementById('typed-title');
+            const currentTitle = titles[currentTitleIndex];
+            currentTitleIndex = (currentTitleIndex + 1) % titles.length;
 
-            if (title.offsetWidth < window.innerWidth) {
-                requestAnimationFrame(increaseFontSize);
-            } else {
-                // Set the final font size and make the background color the same as the title
-                title.style.fontSize = '200vh';
-                document.body.style.backgroundColor = window.getComputedStyle(title).color;
-                isAnimationInProgress = false; // Enable click after the animation is complete
+            title.textContent = '';
+
+            function typeWriter(index) {
+                if (index < currentTitle.length) {
+                    title.textContent += currentTitle.charAt(index);
+                    const delay = 100;
+                    setTimeout(function () {
+                        typeWriter(index + 1);
+                    }, delay);
+                } else {
+                    if (currentTitleIndex === 0) {
+                        setTimeout(growTitle, 2000); // Trigger the grow animation after a delay for the last title
+                    } else {
+                        isAnimationInProgress = false; // Enable click after typing is complete for non-last titles
+                    }
+                }
             }
-        }
 
-        increaseFontSize();
+            function growTitle() {
+    title.style.animation = 'growAnimation 2s forwards';
+
+    // Set the final font size and make the background color the same as the title
+    function finalizeAnimation() {
+        title.style.fontSize = '200vh';
+        document.body.style.backgroundColor = window.getComputedStyle(title).color;
+        isAnimationInProgress = false; // Enable click after the animation is complete
     }
 
-    typeWriter(0);
+    // Start the finalizeAnimation after the growAnimation
+    setTimeout(finalizeAnimation, 2000);
 }
 
 
+
+
+            typeWriter(0);
+        }
 
         // Trigger the reveal animation after the page is fully loaded
         window.onload = function () {
@@ -146,3 +151,4 @@
 
 </body>
 </html>
+
